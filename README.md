@@ -16,4 +16,4 @@ This project shows different scenes from locations around the world. It adjusts 
 
 This webpae is deployed to GitHub Pages
 
-- Deployment Link: https://kylemtaylor93.github.io/se_project_spots/
+- [Deployment Link](https://kylemtaylor93.github.io/se_project_spots/)
