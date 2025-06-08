@@ -1,0 +1,14 @@
+.footer {
+  position: center;
+  background-color: #fcf5e5;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.footer__copyright {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
