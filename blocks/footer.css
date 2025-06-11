@@ -1,14 +1,21 @@
 .footer {
-  position: center;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   background-color: #fcf5e5;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 60px 0;
 }
 
 .footer__copyright {
-  justify-content: center;
-  align-items: center;
-  display: flex;
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #212121;
+  text-align: center;
 }
