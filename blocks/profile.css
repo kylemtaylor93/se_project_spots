@@ -40,8 +40,8 @@
   -webkit-box-orient: vertical;
   max-width: 420px;
   font-size: 16px;
-  line-height: 1.2;
-  color: #212121;
+  line-height: 1;
+  color: #212121b2;
 }
 
 .profile__edit-btn {
@@ -55,6 +55,7 @@
   font-weight: 500;
   color: #212121;
   display: flex;
+  gap: 8px;
   align-items: center;
 }
 
@@ -66,7 +67,7 @@
 .profile__add-btn {
   margin-left: auto;
   background-color: #212121;
-  color: white;
+  color: #fcf5e5;
   height: 52px;
   width: 149px;
   border: none;
@@ -79,7 +80,7 @@
 }
 
 .profile__add-btn:hover {
-  background-color: #333;
+  opacity: 0.8;
   cursor: pointer;
 }
 
