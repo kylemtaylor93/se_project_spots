@@ -1,0 +1,153 @@
+.modal {
+  visibility: hidden;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_is-opened {
+  visibility: visible;
+}
+
+.modal__container {
+  max-width: 730px;
+  width: 100%;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 32px 50px;
+  position: relative;
+}
+
+.modal__close-btn {
+  background-color: transparent;
+  border: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../images/Group\ 27.svg);
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 40%;
+}
+
+.modal__title {
+  margin: 0 0 32px;
+  max-width: 169px;
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  line-height: 1;
+  font-weight: 500;
+  color: #212121;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__label {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: #212121;
+  margin: 0 0 32px;
+}
+
+.modal__input {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  line-height: 1;
+  display: block;
+  margin: 8px 0 0;
+  width: 100%;
+  padding: 8px;
+  max-width: 630px;
+  border: 1px solid #2121214d;
+  border-radius: 8px;
+  font-weight: 500;
+  color: #212121;
+}
+
+modal__input::placeholder {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+  color: #2121214d;
+}
+
+.modal__save-btn {
+  max-width: 156px;
+  width: 100%;
+  padding: 18px 32px;
+  background-color: #212121;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 627px) {
+  .modal__container {
+    padding: 32px 20px;
+    max-width: 300px;
+    width: 100%;
+    position: relative;
+    margin: 0 20px;
+  }
+
+  .modal__close-btn {
+    top: 32px;
+    right: 20px;
+  }
+
+  .modal__title {
+    max-width: 276px;
+    width: 100%;
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .modal__label {
+    margin-bottom: 16px;
+    max-width: 276px;
+    width: 100%;
+    font-size: 20px;
+    line-height: 1;
+    font-weight: 500;
+    color: #212121;
+  }
+
+  .modal__input {
+    max-width: 276px;
+    width: 100%;
+    padding: 16px 12px;
+    font-size: 20px
+    font-size: 16px;
+    font-weight: 500;
+    color: #2121214d
+
+  }
+
+  .modal__save-btn {
+    max-width: none;
+    width: auto;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #212121;
+    cursor: pointer;
+  }
+}
