@@ -9,10 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .modal_is-opened {
   visibility: visible;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
 }
 
 .modal__container {
@@ -38,6 +42,7 @@
   height: 40px;
   cursor: pointer;
   opacity: 40%;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .modal__title {
@@ -79,7 +84,7 @@
   color: #212121;
 }
 
-modal__input::placeholder {
+.modal__input::placeholder {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 1;
@@ -96,6 +101,7 @@ modal__input::placeholder {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
 @media screen and (max-width: 627px) {
@@ -110,6 +116,7 @@ modal__input::placeholder {
   .modal__close-btn {
     top: 32px;
     right: 20px;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .modal__title {
@@ -133,11 +140,9 @@ modal__input::placeholder {
     max-width: 276px;
     width: 100%;
     padding: 16px 12px;
-    font-size: 20px
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 500;
-    color: #2121214d
-
+    color: #2121214d;
   }
 
   .modal__save-btn {
@@ -149,5 +154,6 @@ modal__input::placeholder {
     color: #fff;
     background-color: #212121;
     cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
   }
 }
