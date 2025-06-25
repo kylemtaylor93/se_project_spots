@@ -1,5 +1,6 @@
 .modal {
   visibility: hidden;
+  max-width: 730px;
   background-color: #00000080;
   position: fixed;
   top: 0;
@@ -11,6 +12,7 @@
   align-items: center;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
+  margin: 0 auto;
 }
 
 .modal_is-opened {
@@ -26,6 +28,7 @@
   background-color: #fff;
   padding: 32px 50px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .modal__close-btn {
@@ -34,7 +37,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  background-image: url(../images/Group\ 27.svg);
+  background-image: url(../images/Group\27.svg);
   position: absolute;
   top: 32px;
   right: 50px;
@@ -43,6 +46,11 @@
   cursor: pointer;
   opacity: 40%;
   transition: opacity 0.3s ease-in-out;
+}
+
+.modal__close-btn:hover {
+  opacity: 40%;
+  cursor: pointer;
 }
 
 .modal__title {
@@ -65,7 +73,7 @@
   font-size: 16px;
   line-height: 1.2;
   font-weight: 500;
-  color: #212121;
+  color: #2121214d;
   margin: 0 0 32px;
 }
 
@@ -76,12 +84,17 @@
   display: block;
   margin: 8px 0 0;
   width: 100%;
-  padding: 8px;
-  max-width: 630px;
+  padding: 12px;
   border: 1px solid #2121214d;
   border-radius: 8px;
   font-weight: 500;
   color: #212121;
+  box-sizing: border-box;
+}
+
+.modal__input:hover {
+  border-color: #212121;
+  outline: none;
 }
 
 .modal__input::placeholder {
@@ -99,7 +112,7 @@
   background-color: #212121;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
@@ -122,7 +135,7 @@
   .modal__title {
     max-width: 276px;
     width: 100%;
-    font-size: 24px;
+    font-size: 20px;
     margin-bottom: 24px;
   }
 
@@ -130,9 +143,8 @@
     margin-bottom: 16px;
     max-width: 276px;
     width: 100%;
-    font-size: 20px;
-    line-height: 1;
-    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.1;
     color: #212121;
   }
 
@@ -140,8 +152,7 @@
     max-width: 276px;
     width: 100%;
     padding: 16px 12px;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 16px;
     color: #2121214d;
   }
 
@@ -150,7 +161,6 @@
     width: auto;
     padding: 14px 24px;
     font-size: 16px;
-    font-weight: 500;
     color: #fff;
     background-color: #212121;
     cursor: pointer;
