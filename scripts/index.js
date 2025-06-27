@@ -2,7 +2,8 @@ const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
-const editNewPostForm = editProfileModal.querySelector(".modal__form");
+const newPostModal = document.querySelector("#new-post-modal");
+const editNewPostForm = newPostModal.querySelector(".modal__form");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
 );
@@ -10,14 +11,11 @@ const editProfileDescriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
 
-const cardNameInput = editProfileModal.querySelector("#card-image-input");
-const cardDescriptionInput = editProfileModal.querySelector(
-  "#card-caption-input"
-);
+const cardNameInput = newPostModal.querySelector("#card-image-input");
+const cardDescriptionInput = newPostModal.querySelector("#card-caption-input");
 
 const newPostBtn = document.querySelector(".profile__new-post-btn");
 console.log("New Post Button:", newPostBtn);
-const newPostModal = document.querySelector("#new-post-modal");
 
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 
@@ -52,7 +50,7 @@ function handleEditProfileSubmit(event) {
 
 function handleEditNewPostSubmit(event) {
   event.preventDefault();
-  console.log(cardNameInput.value);
+  console.log(cardDescriptionInput.value);
   console.log(cardcaptionInput.value);
   newPostModal.classList.remove("modal_is-opened");
 }
