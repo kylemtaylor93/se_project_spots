@@ -50,7 +50,7 @@ const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 
 const previewModal = document.querySelector("#preview-modal");
-const previewModalCloseBtn = previewModal.querySelector(".modal__close");
+const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image");
 const previewCaptionEl = previewModal.querySelector(".modal__caption");
 
@@ -77,7 +77,6 @@ function getCardElement(data) {
   const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
   cardDeleteBtnEl.addEventListener("click", () => {
     cardElement.remove();
-    cardElement = null;
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -139,6 +138,8 @@ function handleEditNewPostSubmit(event) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
+  cardNameInput.value = "";
+  cardDescriptionInput.value = "";
 
   closeModal(newPostModal);
 }

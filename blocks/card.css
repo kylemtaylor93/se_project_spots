@@ -13,6 +13,10 @@
   border-radius: 8px;
 }
 
+.card__image:hover {
+  curser: pointer;
+}
+
 .card__title {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -26,7 +30,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-.card__content {
+.card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,6 +55,7 @@
 
 .card__like-btn {
   background-image: url(../images/like.svg);
+  background-repeat: no-repeat;
   width: 23px;
   height: 20px;
   border: none;
