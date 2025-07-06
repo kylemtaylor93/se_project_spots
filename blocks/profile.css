@@ -117,6 +117,7 @@
     margin: 0;
     width: 100%;
     text-align: center;
+    justify-content: center;
   }
 
   .profile__new-post-btn {
