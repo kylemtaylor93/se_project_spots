@@ -53,7 +53,7 @@
   line-height: 24px;
   color: #fff;
   position: absolute;
-  bacground-color: #212121;
+  background-color: #212121;
   border-radius: 8px;
   left: 0;
   top: calc(100% + 10px);
@@ -84,8 +84,8 @@
 .modal__close-btn_type_preview {
   color: #fff;
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 0;
+  right: -42px;
   background-image: url(../images/white_button.svg);
 }
 
@@ -158,6 +158,11 @@
     padding: 22px 12px 12px;
   }
 
+  .modal__close-btn_type_preview {
+    top: -40px;
+    right: 0;
+  }
+
   .modal__close-btn {
     top: 22px;
     right: 12px;
@@ -196,7 +201,7 @@
     width: auto;
   }
 
-  .modal__Caption {
+  .modal__caption {
     font-size: 16px;
   }
 }
