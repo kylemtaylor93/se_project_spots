@@ -111,6 +111,7 @@
   font-weight: 500;
   color: #212121b3;
   margin: 0 0 32px;
+  display: block;
 }
 
 .modal__input {
@@ -133,12 +134,30 @@
   outline: none;
 }
 
+.modal__input_type_error {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
+.modal__error-visible {
+  display: block;
+}
+
 .modal__input::placeholder {
   font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 1;
   font-weight: 500;
   color: #2121214d;
+}
+
+.modal__error {
+  display: block;
+  color: red;
+  margin-top: 8px;
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal__save-btn {
@@ -151,6 +170,11 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
+}
+
+.modal__save-btn_disabled {
+  background-color: #21212180;
+  cursor: not-allowed;
 }
 
 @media screen and (max-width: 627px) {

@@ -1,3 +1,5 @@
+//pass setting object to all functions instead of hardcoded strings
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -31,6 +33,7 @@ const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
 const newPostModal = document.querySelector("#new-post-modal");
 const editNewPostForm = newPostModal.querySelector(".modal__form");
+const cardSubmitBtn = newPostModal.querySelector(".modal__save-btn");
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
 );
@@ -138,8 +141,8 @@ function handleEditNewPostSubmit(event) {
 
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-  cardNameInput.value = "";
-  cardDescriptionInput.value = "";
+  event.target.reset();
+  disableButton(cardSubmitBtn);
 
   closeModal(newPostModal);
 }
