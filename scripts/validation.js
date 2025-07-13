@@ -35,18 +35,18 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonElement);
+    disableButton(buttonElement, config);
   } else {
     buttonElement.disabled = false;
-    buttonElement.classList.remove("modal__save-btn_disabled");
+    buttonElement.classList.remove(config.inactiveButtonClass);
   }
 };
 
-const disableButton = (buttonElement) => {
+const disableButton = (buttonElement, config) => {
   buttonElement.disabled = true;
-  buttonElement.classList.add("modal__save-btn_disabled");
+  buttonElement.classList.add(config.inactiveButtonClass);
   //TODO - add a modifier class to the buttonelement to make it gray and do CSS.
 };
 
@@ -65,6 +65,22 @@ const setEventListeners = (formEl, config) => {
     });
   });
 };
+
+function resetValidation(formEl, config) {
+  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
+  const buttonElement = formEl.querySelector(config.submitButtonSelector);
+
+  inputList.forEach((inputElement) => {
+    hideInputError(formEl, inputElement, config);
+  });
+
+  toggleButtonState(inputList, buttonElement, config);
+}
+
+editProfileCloseBtn.addEventListener("click", function () {
+  closeModal(editProfileModal);
+  resetValidation(editProfileForm, settings); // <-- Add this line
+});
 
 const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);

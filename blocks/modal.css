@@ -182,15 +182,15 @@
     padding: 22px 12px 12px;
   }
 
-  .modal__close-btn_type_preview {
-    top: -40px;
-    right: 0;
-  }
-
   .modal__close-btn {
     top: 22px;
     right: 12px;
     transition: opacity 0.3s ease-in-out;
+  }
+
+  .modal__close-btn_type_preview {
+    top: -40px;
+    right: 0;
   }
 
   .modal__image {

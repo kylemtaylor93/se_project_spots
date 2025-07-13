@@ -14,7 +14,7 @@
 }
 
 .card__image:hover {
-  curser: pointer;
+  cursor: pointer;
 }
 
 .card__title {
