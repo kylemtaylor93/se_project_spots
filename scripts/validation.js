@@ -35,18 +35,18 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement, config) => {
+const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
-    disableButton(buttonElement, config);
+    disableButton(buttonElement);
   } else {
     buttonElement.disabled = false;
-    buttonElement.classList.remove(config.inactiveButtonClass);
+    buttonElement.classList.remove("modal__save-btn_disabled");
   }
 };
 
-const disableButton = (buttonElement, config) => {
+const disableButton = (buttonElement) => {
   buttonElement.disabled = true;
-  buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.classList.add("modal__save-btn_disabled");
   //TODO - add a modifier class to the buttonelement to make it gray and do CSS.
 };
 
@@ -76,11 +76,6 @@ function resetValidation(formEl, config) {
 
   toggleButtonState(inputList, buttonElement, config);
 }
-
-editProfileCloseBtn.addEventListener("click", function () {
-  closeModal(editProfileModal);
-  resetValidation(editProfileForm, settings); // <-- Add this line
-});
 
 const enableValidation = (config) => {
   const formList = document.querySelectorAll(config.formSelector);

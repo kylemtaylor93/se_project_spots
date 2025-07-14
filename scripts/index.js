@@ -101,6 +101,14 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("mousedown", (event) => {
+    if (event.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
@@ -109,6 +117,7 @@ editProfileBtn.addEventListener("click", function () {
 
 editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
+  resetValidation(editProfileForm, settings);
 });
 
 //TODO - set close button for preview modal
@@ -153,4 +162,13 @@ editNewPostForm.addEventListener("submit", handleEditNewPostSubmit);
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    const openedModal = document.querySelector(".modal.modal_is-opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
 });
