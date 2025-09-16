@@ -1,4 +1,6 @@
-//pass setting object to all functions instead of hardcoded strings
+import "./index.css";
+
+import { enableValidation, validationConfig } from "../scripts/validation.js";
 
 const initialCards = [
   {
@@ -156,6 +158,11 @@ function handleEditNewPostSubmit(event) {
   closeModal(newPostModal);
 }
 
+function disableButton(buttonElement) {
+  buttonElement.disabled = true;
+  buttonElement.classList.add("modal__save-btn_disabled"); // optional: style class
+}
+
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 editNewPostForm.addEventListener("submit", handleEditNewPostSubmit);
 
@@ -172,3 +179,5 @@ document.addEventListener("keydown", function (event) {
     }
   }
 });
+
+enableValidation(validationConfig);
