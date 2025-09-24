@@ -1,6 +1,10 @@
 import "./index.css";
 
-import { enableValidation, validationConfig } from "../scripts/validation.js";
+import {
+  enableValidation,
+  validationConfig,
+  resetValidation,
+} from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 
 const api = new Api({
@@ -10,6 +14,13 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
+
+// --- Global user state ---
+let currentUser = {
+  name: "",
+  about: "",
+  avatar: "",
+};
 
 // --- Helper for button loading state ---
 function renderLoading(isLoading, buttonElement, loadingText = "Saving...") {
@@ -23,10 +34,14 @@ function renderLoading(isLoading, buttonElement, loadingText = "Saving...") {
 api
   .getAppInfo()
   .then(([cards, userData]) => {
-    // set user info
-    profileNameEl.textContent = userData.name;
-    profileDescriptionEl.textContent = userData.about;
-    document.querySelector(".profile__avatar").src = userData.avatar;
+    // set user info and global state
+    currentUser.name = userData.name;
+    currentUser.about = userData.about;
+    currentUser.avatar = userData.avatar;
+
+    profileNameEl.textContent = currentUser.name;
+    profileDescriptionEl.textContent = currentUser.about;
+    document.querySelector(".profile__avatar").src = currentUser.avatar;
 
     // render cards
     cards.forEach((item) => {
@@ -49,6 +64,7 @@ const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
 const deleteCloseBtn = deleteModal.querySelector(".modal__close-btn");
 const deleteSubmitBtn = deleteForm.querySelector(".modal__save-btn");
+const deleteCancelBtn = deleteModal.querySelector(".modal__cancel-btn"); // ✅ NEW
 let cardToDelete = null;
 let cardToDeleteId = null;
 
@@ -150,6 +166,8 @@ document.querySelectorAll(".modal").forEach((modal) => {
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+
+  resetValidation(editProfileForm, validationConfig); // ✅ reset validation before opening
   openModal(editProfileModal);
 });
 
@@ -162,6 +180,7 @@ previewModalCloseBtn.addEventListener("click", function () {
 });
 
 newPostBtn.addEventListener("click", function () {
+  resetValidation(editNewPostForm, validationConfig); // ✅ reset validation before opening
   openModal(newPostModal);
 });
 
@@ -179,8 +198,11 @@ function handleEditProfileSubmit(event) {
       about: editProfileDescriptionInput.value,
     })
     .then((data) => {
-      profileNameEl.textContent = data.name;
-      profileDescriptionEl.textContent = data.about;
+      currentUser.name = data.name;
+      currentUser.about = data.about;
+
+      profileNameEl.textContent = currentUser.name;
+      profileDescriptionEl.textContent = currentUser.about;
       closeModal(editProfileModal);
     })
     .catch(console.error)
@@ -199,7 +221,8 @@ function handleAvatarSubmit(event) {
   api
     .editUserAvatar({ avatar: newAvatarUrl })
     .then((data) => {
-      document.querySelector(".profile__avatar").src = data.avatar;
+      currentUser.avatar = data.avatar; // update global state
+      document.querySelector(".profile__avatar").src = currentUser.avatar;
       avatarForm.reset();
       closeModal(avatarModal);
       disableButton(avatarSubmitBtn);
@@ -228,11 +251,13 @@ deleteForm.addEventListener("submit", (e) => {
         cardToDelete.remove();
         cardToDelete = null;
         cardToDeleteId = null;
+        closeModal(deleteModal); // ✅ only close on success
       })
-      .catch(console.error)
+      .catch((err) => {
+        console.error(err);
+      })
       .finally(() => {
         renderLoading(false, deleteSubmitBtn, "Deleting...");
-        closeModal(deleteModal);
       });
   } else {
     closeModal(deleteModal);
@@ -240,6 +265,11 @@ deleteForm.addEventListener("submit", (e) => {
 });
 
 deleteCloseBtn.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
+
+// ✅ NEW Cancel button handler
+deleteCancelBtn.addEventListener("click", () => {
   closeModal(deleteModal);
 });
 // --------------------------
@@ -271,6 +301,7 @@ function handleEditNewPostSubmit(event) {
 }
 
 function disableButton(buttonElement) {
+  //validation.js
   buttonElement.disabled = true;
   buttonElement.classList.add("modal__save-btn_disabled");
 }
@@ -279,6 +310,7 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 editNewPostForm.addEventListener("submit", handleEditNewPostSubmit);
 
 avatarModalBtn.addEventListener("click", () => {
+  resetValidation(avatarForm, validationConfig);
   openModal(avatarModal);
 });
 

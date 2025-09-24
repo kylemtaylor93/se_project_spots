@@ -47,10 +47,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 const disableButton = (buttonElement) => {
   buttonElement.disabled = true;
   buttonElement.classList.add("modal__save-btn_disabled");
-  //TODO - add a modifier class to the buttonelement to make it gray and do CSS.
 };
-
-//use settings object in all functionsinstead of hardcoded strings
 
 const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
@@ -83,3 +80,5 @@ export const enableValidation = (config) => {
     setEventListeners(formEl, config);
   });
 };
+
+export { resetValidation };
