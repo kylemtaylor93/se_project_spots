@@ -1,4 +1,4 @@
-const settings = {
+export const validationConfig = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save-btn",
@@ -47,10 +47,7 @@ const toggleButtonState = (inputList, buttonElement) => {
 const disableButton = (buttonElement) => {
   buttonElement.disabled = true;
   buttonElement.classList.add("modal__save-btn_disabled");
-  //TODO - add a modifier class to the buttonelement to make it gray and do CSS.
 };
-
-//use settings object in all functionsinstead of hardcoded strings
 
 const setEventListeners = (formEl, config) => {
   const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
@@ -77,11 +74,11 @@ function resetValidation(formEl, config) {
   toggleButtonState(inputList, buttonElement, config);
 }
 
-const enableValidation = (config) => {
-  const formList = document.querySelectorAll(config.formSelector);
+export const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formEl) => {
     setEventListeners(formEl, config);
   });
 };
 
-enableValidation(settings);
+export { resetValidation };
